@@ -52,3 +52,11 @@ jobs:
           with:
             name: freedomotic-5.6.0-${{ env.GITHUB_SHA_SHORT }}.zip
             path: staging
+            
+        - name: Update dailybuild release
+          uses: eine/tip@master
+          with:
+            tag: dailybuild
+            rm: true
+            token: ${{ secrets.GITHUB_TOKEN }}
+    
