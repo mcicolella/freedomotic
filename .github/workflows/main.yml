@@ -60,4 +60,4 @@ jobs:
             rm: true
             token: ${{ secrets.GITHUB_TOKEN }}
             files: framework/freedomotic-core/target/release/*.zip
-    
+   
