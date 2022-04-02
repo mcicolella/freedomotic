@@ -54,9 +54,10 @@ jobs:
             path: staging
             
         - name: Update dailybuild release
-          uses: eine/tip@master
+          uses: pyTooling/Actions/releaser@main
           with:
             tag: dailybuild
             rm: true
             token: ${{ secrets.GITHUB_TOKEN }}
+            files: framework/freedomotic-core/target/release/*.zip
     
