@@ -77,7 +77,7 @@ jobs:
         - name: Build and push
           uses: docker/build-push-action@v2
           with:
-            context: scripts/docker/amd64/Dockerfile
+            context: /scripts/docker/amd64/Dockerfile
             push: true
             tags: |
               ghcr.io/${{ github.repository_owner }}/freedomotic-5.6.0:dailybuild
