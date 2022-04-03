@@ -60,7 +60,7 @@ jobs:
           uses: pyTooling/Actions/releaser@main
           with:
             tag: dailybuild
-            rm: true
+            rm: false
             token: ${{ secrets.GITHUB_TOKEN }}
             files: framework/freedomotic-core/target/release/*.zip
             
