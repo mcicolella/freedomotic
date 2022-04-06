@@ -21,7 +21,7 @@ ENV FREEDOMOTIC_URL="https://github.com/mcicolella/freedomotic/releases/download
 FROM base AS build
 
 # Update && upgrade
-RUN apt-get update && upgrade
+RUN apt-get update 
 
 # Install build packages
 RUN apt-get install zip
