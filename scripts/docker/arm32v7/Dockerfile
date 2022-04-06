@@ -1,8 +1,4 @@
-# This Dockerfile uses Docker Multi-Stage Builds
-# See https://docs.docker.com/engine/userguide/eng-image/multistage-build/
-# Requires Docker v17.05
-
-## Base image for build and runtime
+# Build image
 FROM arm32v7/eclipse-temurin:11 AS base
 
 LABEL freedomotic.version="5.6.0" \
@@ -14,26 +10,21 @@ WORKDIR /srv
 # Freedomotic release artifact location
 ENV FREEDOMOTIC_URL="https://github.com/mcicolella/freedomotic/releases/download/dailybuild/freedomotic-5.6-SNAPSHOT.zip"
 
-# Install build/run packages
-# RUN apt-get install --no-cache curl
-
 ## Build image
 FROM base AS build
 
 # Update && upgrade && install build packages
 RUN apt-get update && apt-get install -y curl zip
 
-# Install build packages
-# RUN apt-get install -y curl zip
-
 # Download and install Freedomotic
-RUN curl -sL -o /tmp/latest.zip "${FREEDOMOTIC_URL}"
-RUN unzip /tmp/latest.zip -d /srv/
-RUN mv /srv/freedom* /srv/freedomotic \
+RUN curl -sL -o /tmp/latest.zip "${FREEDOMOTIC_URL}" \
+    && unzip /tmp/latest.zip -d /srv/ \
+    && mv /srv/freedom* /srv/freedomotic \
     && rm -rf /srv/freedomotic/plugins/devices/frontend-java
 
 ## Runtime image
 FROM base AS runtime
+
 # Copy application and artifacts from build image
 COPY --from=build /srv/ /srv/
 
