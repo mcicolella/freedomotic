@@ -24,7 +24,7 @@ FROM base AS build
 RUN apt-get update 
 
 # Install build packages
-RUN apt-get install zip
+RUN apt-get install -y curl zip
 
 # Download and install Freedomotic
 RUN curl -sL -o /tmp/latest.zip "${FREEDOMOTIC_URL}"
