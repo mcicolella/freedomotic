@@ -15,7 +15,7 @@ WORKDIR /srv
 ENV FREEDOMOTIC_URL="https://github.com/mcicolella/freedomotic/releases/download/dailybuild/freedomotic-5.6-SNAPSHOT.zip"
 
 # Install build/run packages
-RUN apt-get install --no-cache curl
+#RUN apt-get install --no-cache curl
 
 ## Build image
 FROM base AS build
