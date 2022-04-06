@@ -15,13 +15,13 @@ WORKDIR /srv
 ENV FREEDOMOTIC_URL="https://github.com/mcicolella/freedomotic/releases/download/dailybuild/freedomotic-5.6-SNAPSHOT.zip"
 
 # Install build/run packages
-#RUN apt-get install --no-cache curl
+# RUN apt-get install --no-cache curl
 
 ## Build image
 FROM base AS build
 
 # Install build packages
-RUN apt-get install --no-cache zip
+RUN apt-get install zip
 
 # Download and install Freedomotic
 RUN curl -sL -o /tmp/latest.zip "${FREEDOMOTIC_URL}"
