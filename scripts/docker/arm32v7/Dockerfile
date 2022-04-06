@@ -20,11 +20,11 @@ ENV FREEDOMOTIC_URL="https://github.com/mcicolella/freedomotic/releases/download
 ## Build image
 FROM base AS build
 
-# Update && upgrade
-RUN apt-get update 
+# Update && upgrade && install build packages
+RUN apt-get update && apt-get install -y curl zip
 
 # Install build packages
-RUN apt-get install -y curl zip
+# RUN apt-get install -y curl zip
 
 # Download and install Freedomotic
 RUN curl -sL -o /tmp/latest.zip "${FREEDOMOTIC_URL}"
